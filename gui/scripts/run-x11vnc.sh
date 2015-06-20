@@ -1,3 +1,3 @@
 #!/bin/bash -x
 
-exec x11vnc -forever -geometry ${XVFB_GEOMETRY:-1280x1024} -display :1 -rfbauth /opt/calibre/.vnc/passwd
+exec x11vnc -N -forever -display $DISPLAY -rfbport 5900 -rfbauth /opt/calibre/.vnc/passwd

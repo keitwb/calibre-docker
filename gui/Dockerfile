@@ -3,12 +3,15 @@ FROM keitwb/calibre-base
 MAINTAINER Ben Keith <keitwb@gmail.com>
 
 EXPOSE 5900
-ENTRYPOINT /scripts/run.sh
-VOLUME /var/log/supervisor
+ENTRYPOINT ["/entrypoint"]
+ENV DISPLAY :1
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -qq x11vnc supervisor xvfb && apt-get clean
+RUN apt-get update -qq &&\
+    apt-get install -y -qq x11vnc supervisor fluxbox xserver-xorg-video-dummy-lts-trusty &&\
+    apt-get clean
 
-ADD supervisor.conf /opt/calibre/supervisord.conf
-ADD scripts /scripts
-RUN chmod +x /scripts/*
+COPY supervisor.conf /opt/calibre/supervisord.conf
+COPY xorg.conf /etc/X11/xorg.conf
+COPY scripts /scripts
+COPY entrypoint /entrypoint
 
