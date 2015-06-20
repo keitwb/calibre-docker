@@ -1,0 +1,21 @@
+data:
+  entrypoint: /bin/true
+  image: keitwb/calibre-base
+gui:
+  build: gui
+  ports:
+    - '25900:5900'
+  volumes_from:
+    - data
+  environment:
+    VNC_PASSWORD: calibre
+server:
+  build: server
+  volumes_from:
+    - data
+  ports:
+    '25080:8080'
+  environment:
+    CALIBRE_USERNAME: calibre
+    CALIBRE_PASSWORD: calibre
+
