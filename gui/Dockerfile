@@ -1,4 +1,4 @@
-FROM keitwb/calibre-base
+FROM keitwb/calibre-base:2.53
 
 MAINTAINER Ben Keith <keitwb@gmail.com>
 
