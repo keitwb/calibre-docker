@@ -10,7 +10,7 @@ RUN apt-get update -y -qq && \
 RUN groupadd -r calibre && useradd -g calibre -d /opt/calibre -r -m calibre
 
 WORKDIR /tmp
-ENV CALIBRE_PACKAGE_URL http://download.calibre-ebook.com/2.53.0/calibre-2.53.0-x86_64.txz
+ENV CALIBRE_PACKAGE_URL http://download.calibre-ebook.com/2.59.0/calibre-2.59.0-x86_64.txz
 RUN wget $CALIBRE_PACKAGE_URL &&\
     apt-get install -y -qq xz-utils &&\
     tar xvf calibre*.txz -C /opt/calibre &&\

@@ -7,7 +7,7 @@ ENTRYPOINT ["/entrypoint"]
 ENV DISPLAY :1
 
 RUN apt-get update -qq &&\
-    apt-get install -y -qq x11vnc supervisor fluxbox xserver-xorg-video-dummy-lts-trusty &&\
+    apt-get install -y -qq x11vnc supervisor fluxbox xserver-xorg-video-dummy-lts-trusty evince firefox &&\
     apt-get clean
 
 COPY supervisor.conf /opt/calibre/supervisord.conf
